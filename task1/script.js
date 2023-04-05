@@ -86,8 +86,6 @@ function ballMove() {
         
     }
 
-    
-
     ballX += ballMx;
     ballY += ballMy;
 
