@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,18 +13,20 @@ body{
     background-color: #704dad;
 }
 
-#general{
+#general {
     border: 2px solid black;
     /* border-bottom: 2px solid red;
      */
-    border-bottom: none ;
+    border-bottom: none;
     width: 800px;
     height: 600px;
     position: relative;
     background-color: aliceblue;
 }
 
-#ball{
+
+
+#ball {
     background-color: brown;
     width: 50px;
     height: 50px;
@@ -32,7 +34,7 @@ body{
     position: absolute;
 }
 
-#bar{
+#bar {
     width: 100px;
     height: 20px;
     border-radius: 20px;
@@ -41,16 +43,95 @@ body{
     bottom: -20px;
 }
 
-#tbl{
+#tbl {
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 25px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+}
+
+caption {
+    color: white;
+    margin-bottom: 7px;
+    font-size: 20px;
+  }
+
+th {
+    background: rgba(255, 137, 0, 0.9);
+    padding: 10px 20px;
+    color: rgba(129, 69, 0, 1);
+}
+
+th,
+td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 
-
-
-td{
-    padding: 10px;
-    color: #fff;
+th:first-child {
+    border-top-left-radius: 5px;
 }
+
+th:last-child {
+    border-top-right-radius: 5px;
+    border-right: none;
+}
+
+th:first-child,
+td:first-child {
+    padding: 7px 8px;
+}
+
+td {
+    padding: 7px 20px;
+    background: rgba(230, 230, 230, 1);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+.point-inp{
+    width: 150px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    background-color: #fff;
+    border: 1px solid blue;
+    border-radius: 25px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 50px;
+}
+
+
+button {
+    position: absolute;
+    top: 97px;
+    left: 200px;
+    background: #FBCA1F;
+    font-family: inherit;
+    padding: 0.6em 1.1em;
+    font-weight: 900;
+    font-size: 16px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+  }
+  
+  button:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+  }
+  
+  button:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+  }

@@ -3,6 +3,8 @@ let tbl = document.querySelector('#tbl');
 let general = document.querySelector('#general')
 let ball = document.querySelector('#ball');
 let bar = document.querySelector('#bar');
+let pointBars = document.querySelector('.point-inp')
+let resetBtn = document.querySelector('.reset-Btn')
 let barX = 0;
 let ballX = 0;
 let ballY = 0;
@@ -10,14 +12,21 @@ let ballMx = 5;
 let ballMy = 5;
 let count = 0;
 
+table();
+
 let data = prompt('Adiniz nedir?', 'Player1');
 
-localStorage.removeItem('points');
+// localStorage.removeItem('points');
 
 onkeydown = barMove;
 let set = setInterval(ballMove, 40);
 
-table();
+
+
+resetBtn.addEventListener('click',()=>{
+    localStorage.removeItem('points');
+})
+
 
 function barMove(e) {
 
@@ -42,7 +51,6 @@ function barMove(e) {
 
 function ballMove() {
 
-
     if (ballX < 0 || ballX > 745) {
         ballMx *= -1;
     }
@@ -54,25 +62,31 @@ function ballMove() {
         ballMy += 1;
         ballMy *= -1;
         count++;
+        if(count){
+            pointBars.style.display = "grid"
+            pointBars.innerHTML = `<p>Your Score: ${count}</p>`
+        }
+        
         let r = Math.floor(Math.random() * 256);
         let g = Math.floor(Math.random() * 256);
         let b = Math.floor(Math.random() * 256);
-        let randomColor = "rgb(" + r + ", " + g + ", " + b + ")";
         ball.style.background = "rgb(" + r + ", " + g + ", " + b + ")";
         bar.style.background = "rgb(" + g + ", " + r + ", " + b + ")";
 
 
     } else if (ballY > 550) {
         localAdd();
-        
-        // general.style.borderBottom = "2px solid red";
         let result = confirm('Uduzdunuz yeni oyuna baslamaq isteyirsinizmi?');
         clearInterval(set);
         if (result) {
             location.reload();
+        }else{
+            table();
         }
         
     }
+
+    
 
     ballX += ballMx;
     ballY += ballMy;
@@ -95,17 +109,12 @@ function localAdd() {
     localStorage.setItem('points', JSON.stringify(points));
 }
 
-
-// let dataAll = JSON.parse(localStorage.getItem('points'));
-// console.log(dataAll[0][0]);
-
-
 function table() {
     let dataAll = [];
     dataAll = JSON.parse(localStorage.getItem('points'));
-    let tr = `<tr>
-    <td> Name </td>
-    <td> Point </td>
+    let tr = `<caption>High Scores</caption><tr>
+    <th> Name </th>
+    <th> Point </th>
     </tr>`
     for (let i = 0; i < dataAll.length; i++) {
         tr += `<tr>
@@ -114,15 +123,11 @@ function table() {
                 </tr>`
     }
 
-
-
     tbl.innerHTML = tr;
 }
 
 
-function rank(){
 
-}
 
 
 
