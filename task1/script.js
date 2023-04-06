@@ -14,8 +14,10 @@ let count = 0;
 
 table();
 
-let data = prompt('Adiniz nedir?', 'Player1');
-
+let data;
+setTimeout(() => {
+    data = prompt("Adinizi daxil edin","Player 1")    
+}, 200);
 // localStorage.removeItem('points');
 
 onkeydown = barMove;
@@ -25,6 +27,7 @@ let set = setInterval(ballMove, 40);
 
 resetBtn.addEventListener('click',()=>{
     localStorage.removeItem('points');
+    tbl.remove();
 })
 
 
@@ -108,7 +111,9 @@ function localAdd() {
 }
 
 function table() {
-    let dataAll = [];
+    try {
+        let dataAll = [];
+    
     dataAll = JSON.parse(localStorage.getItem('points'));
     let tr = `<caption>High Scores</caption><tr>
     <th> Name </th>
@@ -122,6 +127,9 @@ function table() {
     }
 
     tbl.innerHTML = tr;
+    } catch (error) {
+        
+    }
 }
 
 
